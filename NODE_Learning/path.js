@@ -1,12 +1,14 @@
 import path from "path";
-
+import fs from "fs";
 // console.log(__dirname);
 // console.log(__filename);
 
-const filePath = path.join("folder", "student", "data.txt");
+// Create the file path
+const filePath = path.join("folder", "student", "uoadted.txt");
 
-// Print the platform-specific separator
-console.log(path.sep); // e.g., '/' on Linux/Mac, '\' on Windows
 
-// Split a path into its segments using the separator
-console.log(filePath.split(path.sep)); // ['folder', 'student', 'data.txt']
+// Write to the file at the specified path
+fs.writeFileSync(filePath, "THIS IS ROHIT DEKA", "utf-8");
+const data = fs.readFileSync(filePath);
+console.log(data.toString());
+
