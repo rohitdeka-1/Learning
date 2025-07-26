@@ -1,5 +1,6 @@
 import { watch, watchFile } from 'node:fs';
 import path from 'path';
+import chokidar from 'chokidar';
 
 console.log('=== fs.watch Tutorial ===\n');
 
@@ -80,3 +81,16 @@ console.log('\n=== Tutorial Started ===');
 console.log('Try creating, modifying, or deleting files in the ./folder directory');
 console.log('The watchers will detect and log all changes.');
 console.log('This will run for 30 seconds then stop automatically.\n');
+
+// fs.watch - Limited events
+watch('./folder', (eventType, filename) => {
+  // Only 'rename' and 'change' events
+});
+
+// Chokidar - Rich event system
+chokidar.watch('./folder')
+  .on('add', path => console.log(`File ${path} has been added`))
+  .on('change', path => console.log(`File ${path} has been changed`))
+  .on('unlink', path => console.log(`File ${path} has been removed`))
+  .on('addDir', path => console.log(`Directory ${path} has been added`))
+  .on('unlinkDir', path => console.log(`Directory ${path} has been removed`));
