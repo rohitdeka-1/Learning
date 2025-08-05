@@ -10,8 +10,6 @@ public class helpfulMaths {
         String s = sc.next(); 
         ArrayList<Character> arr = new ArrayList<>();
         
-
-        // 0 1 2 3 4 
         for( int i=0; i<s.length();i++){
             char ch = s.charAt(i);
             if(ch!='+'){

@@ -1,4 +1,4 @@
+ // for( int i=0; i<c.length;i++){
+        //     arr.add(c[i], c[i]);
 
-        // for(char c : s.toCharArray()){
-        //     if(c!=vowels.)
         // }
