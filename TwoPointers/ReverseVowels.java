@@ -26,8 +26,6 @@ public class ReverseVowels {
                 temp = arr[left];
                 arr[left] = arr[right];
                 arr[right] = temp;
-                left++;
-                right--;
             }
 
         }
