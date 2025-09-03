@@ -3,17 +3,16 @@ import java.util.HashMap;
 
 public class MoveHiphen {
 
-    public int strStr(String haystack, String needle) {
-        int hayLen = haystack.length();
-        int neeLen = needle.length();
-
-        if (neeLen < hayLen) {
-
-        }
-
-        return 0;
-    }
-
+    // public int strStr(String haystack, String needle) {
+    //     int hayLen = haystack.length();
+    //     int neeLen = needle.length();
+    //     if (neeLen < hayLen) {
+    //         return -1;
+    //     }
+    //     for(int i=0;i<hayLen-neeLen;i++){
+    //     }
+    //     return 0;
+    // }
     public static boolean isAnagram(String s, String t) {
         HashMap<Character, Integer> map = new HashMap<>();
 
