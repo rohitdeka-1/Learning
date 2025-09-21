@@ -1,15 +1,13 @@
 
 public class MaxSum {
 
-    public static int longestSubarray(int[] arr) {
-        int i = 0;
-        int j = 0;
-        int max = 0;
-        for(int )
-
-        return max;
-    }
-
+    // public static int longestSubarray(int[] arr) {
+    //     int i = 0;
+    //     int j = 0;
+    //     int max = 0;
+    //     for(int )
+    //     return max;
+    // }
     public static int maxOne(int[] arr) {
 
         int max = 0;

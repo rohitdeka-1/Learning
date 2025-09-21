@@ -11,6 +11,5 @@ public class HQ9 {
         } else {
             System.out.print("NO");
         }
-
     }
 }
