@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -5,13 +6,9 @@ import java.util.HashMap;
 public class MidTermExam {
 
     // static int swappingBitLongest(int[] arr){
-
     // while(l<r){
-
     // }
-
     // }
-
     static int swappingNibble(int num) {
         int swapped = ((num & 0x0F) << 4 | ((num & 0xF0) >> 4));
         return swapped;
@@ -189,22 +186,41 @@ public class MidTermExam {
         return maxSum;
     }
 
+    static int[] selectionSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int mini = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[mini]) {
+                    mini = j;
+                }
+            }
+
+            int temp = arr[i];
+            arr[i] = arr[mini];
+            arr[mini] = temp;
+        }
+        return arr;
+    }
+
     public static void main(String[] args) {
-        int[] arr = { 4, 0, -2, 6 };
+        int[] arr = {4, 0, -2, 6};
         // maxProductArray(arr);
-        System.out.println(maxProductArray(arr));
+        // System.out.println(maxProductArray(arr));
+        int[] arr1 = selectionSort(arr);
+
+        for (int num : arr1) {
+            System.out.println(num);
+        }
+
         // int ans = maxSumSubArray(arr);
         // System.out.println(ans);
         // System.out.println(binaryPalindrome(17));
         // System.out.println(gcd(10, 5));
         // System.out.println(eulersPhi(10000));
-
         // Scanner sc = new Scanner(System.in);
         // int x = sc.nextInt();
-
         // int swapped = ( (x & 0x0F )<<4 | (x & 0xF0 )>>4 );
         // System.out.println(swapped);
-
         // int a =5;
         // int ans = a<<1;
         // System.out.println(ans);
