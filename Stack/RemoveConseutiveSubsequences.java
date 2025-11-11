@@ -13,7 +13,6 @@ public class RemoveConseutiveSubsequences {
                 st.push(arr[i]);
             }
         }
-
         return st;
     }
 
