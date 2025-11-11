@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class RemoveDuplicates {
@@ -21,7 +22,7 @@ public class RemoveDuplicates {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[] nums = { 0, 0, 1, 1, 2, 3, 4, 5, 6, 6 };
+        int[] nums = {0, 0, 1, 1, 2, 3, 4, 5, 6, 6};
         int ans = removeDuplicates(nums);
         System.out.println(ans);
     }
