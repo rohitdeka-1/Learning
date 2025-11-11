@@ -6,13 +6,20 @@ public class nextGreaterElement {
     private static int[] remove(int[] arr) {
         Stack<Integer> st = new Stack<>();
         int[] res = new int[arr.length];
-        st.push(arr[arr.length - 1]);
+
+        // last element always has no greater to right
         res[arr.length - 1] = -1;
-        for (int i = arr.length; i >= 0; i--) {
-            if (arr[i] < st.peek()) {
-                res[i] = st.peek();
-                st.push(arr[i]);
+        st.push(arr[arr.length - 1]);
+
+        for (int i = arr.length - 2; i >= 0; i--) {
+
+            while (!st.isEmpty() && st.peek() <= arr[i]) {
+                st.pop();
             }
+
+            res[i] = st.isEmpty() ? -1 : st.peek();
+
+            st.push(arr[i]);
         }
 
         return res;
@@ -20,8 +27,7 @@ public class nextGreaterElement {
 
     public static void main(String[] args) {
         int[] arr = {1, 3, 2, 1, 8, 6, 3, 4};
-
         int[] ans = remove(arr);
-        System.out.println(ans);
+        System.out.println(Arrays.toString(ans));
     }
 }
