@@ -26,7 +26,7 @@ public class nextGreaterElement {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1};
+        int[] arr = {1, 2, 3, 8, 3, 10, 8};
         int[] ans = remove(arr);
         System.out.println(Arrays.toString(ans));
     }
