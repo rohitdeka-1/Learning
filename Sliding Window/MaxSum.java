@@ -90,7 +90,7 @@ public class MaxSum {
         // for (int num : ans) {
         //     System.out.println(num);
         // }
-        int ans = longestSubarray(arr);
-        System.out.println(ans);
+        // int ans = longestSubarray(arr);
+        // System.out.println(ans);
     }
 }
