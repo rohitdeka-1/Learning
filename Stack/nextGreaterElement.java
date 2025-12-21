@@ -6,6 +6,7 @@ public class nextGreaterElement {
     private static int[] remove(int[] arr) {
         Stack<Integer> st = new Stack<>();
         int[] res = new int[arr.length];
+        Queue<Integer> q = new LinkedList<>();
 
         // last element always has no greater to right
         res[arr.length - 1] = -1;
