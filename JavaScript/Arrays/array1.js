@@ -49,3 +49,57 @@ console.log(foundElement); // Output: 20
 // } else {
 //     console.log('User not found');
 // }
+
+
+
+// Tutorial
+// 1. Create an array of size 5
+// 2. Populate the array with multiples of 10
+// 3. Use the find method to locate the element with value 20
+// 4. Print the found element to the console
+
+
+//PUSH, POP
+const arr =[1,3,5,6];
+arr.push(7); // adds 7 at the end
+console.log(arr); // [1,3,5,6,7]
+
+arr.pop();  // removes last element
+console.log(arr); // [1,3,5,6]
+
+
+//Shift Unshift
+arr.unshift(0); // adds 0 at the beginning
+console.log(arr); // [0,1,3,5,6]
+
+arr.shift();
+
+
+
+//MAP METHOD 
+arr.map((items,index,array)=>{
+    return items * 2;
+})
+
+// What is items here in the map function?
+// In the map function, "items" represents the current element being processed in the array during each iteration. 
+// It allows you to access and manipulate each element individually as you create a new array based on the original one.
+
+
+//FILTER METHOD
+const newNum = arr.filter((item)=>{
+    return ( item / 1 != 0 && item != 5 ); 
+})  ;
+
+// output : 1,3,5,6 
+// why?
+console.log(newNum);    // What is filter here?
+// The filter method creates a new array containing all elements from the original array that satisfy a specified condition defined in the callback function. 
+// It is used to filter out elements based on certain criteria, returning only those that meet the condition.
+
+
+
+
+
+
+
