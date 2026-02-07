@@ -1,1 +1,1 @@
-average(current.scores
+ 
