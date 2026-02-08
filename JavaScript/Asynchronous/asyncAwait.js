@@ -46,3 +46,7 @@ async function main() {
 }
 
 main();
+
+
+// async/await doesn't block the main thread - the function pauses at await and yields control.
+// When the promise resolves, the continuation is added to the microtask queue
