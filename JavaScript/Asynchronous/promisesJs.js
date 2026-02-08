@@ -1,8 +1,9 @@
-
+let count = 0;
 function checkout() {
     const prom = new Promise((resolve) => {
         setTimeout(() => {
             console.log("Checking Out...");
+            count++;
             resolve();
         }, 1000)
     });
@@ -10,10 +11,12 @@ function checkout() {
 };
 
 function paid() {
-    const prom = new Promise((resolve) => {
+    const prom = new Promise((resolve,reject) => {
         setTimeout(() => {
-            console.log("Money paid");
-            resolve();
+            if(count !== 1){
+                console.log("Money paid");
+                resolve();
+            }else reject("Payment Failed");
         }, 3000)
     });
     return prom;
@@ -30,7 +33,12 @@ function invoice() {
 };
 
 function main() {
-    checkout().then(paid).then(invoice);
+    checkout()
+    .then(paid)
+    .then(invoice)
+    .catch((err)=>{
+        console.log(err);
+    })
 }
 
 main();
