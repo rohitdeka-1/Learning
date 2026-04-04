@@ -61,6 +61,7 @@ const Counter = () => {
         <p>The count value is stored in the Redux store and shared across components.</p>
       </div>
     </div>
+    
   )
 }
 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing & Throttling Practice</title>
+    <link rel="stylesheet" href="debounce-practice.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Debouncing & Throttling Practice</h1>
+        
+        <!-- Debouncing Section -->
+        <div class="section">
+            <h2>🔍 Debouncing - Search Products</h2>
+            <p class="description">Type to search products. Implement debouncing to reduce API calls!</p>
+            
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search products (e.g., phone, laptop, perfume)..."
+                autocomplete="off"
+            >
+            
+            <div class="stats">
+                <span>API Calls: <strong id="apiCallCount">0</strong></span>
+                <span>Last Call: <strong id="lastCallTime">-</strong></span>
+            </div>
+            
+            <div id="searchResults" class="results"></div>
+        </div>
+
+        <!-- Throttling Section -->
+        <div class="section">
+            <h2>🖱️ Throttling - Mouse Movement Tracker</h2>
+            <p class="description">Move your mouse in the box. Implement throttling to limit updates!</p>
+            
+            <div id="mouseTracker" class="mouse-tracker">
+                <p>Move your mouse here</p>
+            </div>
+            
+            <div class="stats">
+                <span>Position Updates: <strong id="updateCount">0</strong></span>
+                <span>X: <strong id="mouseX">0</strong> Y: <strong id="mouseY">0</strong></span>
+            </div>
+        </div>
+
+        <!-- Window Resize Throttling -->
+        <div class="section">
+            <h2>📏 Throttling - Window Resize</h2>
+            <p class="description">Resize the browser window. Implement throttling for resize events!</p>
+            
+            <div class="stats">
+                <span>Resize Events: <strong id="resizeCount">0</strong></span>
+                <span>Window Size: <strong id="windowSize">-</strong></span>
+            </div>
+        </div>
+
+        <!-- Implementation Section -->
+        <div class="section implementation">
+            <h2>📝 Your Task</h2>
+            <p>Open <code>debounce-practice.js</code> and implement:</p>
+            <ul>
+                <li><strong>debounce()</strong> function - Delay execution until user stops typing</li>
+                <li><strong>throttle()</strong> function - Limit execution to once per time period</li>
+            </ul>
+            <p>The API calls and event handlers are already set up for you!</p>
+        </div>
+    </div>
+
+    <script src="debounce-practice.js"></script>
+</body>
+</html>

@@ -18,6 +18,15 @@ func main() {
 	} else {
 		fmt.Println("Dont  know")
 	}
+	
+	name := "Rohit"
+
+	if(name!="Rohit"){
+		fmt.Println("haha");
+	}
+	else{
+		fmt.Println("NONO");
+	}
 
 	// Type of Variable
 	fmt.Printf("The type of variable AGE is :  %T ", age)
