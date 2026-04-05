@@ -6,7 +6,7 @@ public class Vanyacubes {
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
         int i = 1;
-        int ans = 0;
+        int ans = 0;    
         while(input>=(i*(i+1))/2){
             input -= (i*(i+1))/2;
             ans++;
