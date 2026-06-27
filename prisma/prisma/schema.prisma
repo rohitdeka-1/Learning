@@ -1,0 +1,135 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role{
+  ADMIN
+  USER
+}
+
+model User{
+  id  Int  @id @default(autoincrement())
+  email String @unique
+  name String?
+  role Role @default(USER)
+  courses Course[]
+  enrollments Enrollment[]
+}
+
+model Course{
+  id Int @id @default(autoincrement())
+  title String
+  price Int 
+
+  instructorId Int
+  instructor User @relation(fields: [instructorId], references:[id])
+
+  enrollments Enrollment[]
+
+  categoryId Int
+  category Category @relation(fields:[categoryId],references:[id])
+}
+
+//explicit many to many 
+model Enrollment{
+  id Int @id @default(autoincrement())
+  enrolledAt DateTime
+  progress Int
+  completed Boolean
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  courseId Int
+  course Course @relation(fields:[courseId], references:[id])
+}
+
+model Category{
+  id Int @id @default(autoincrement())
+  title String
+  courses Course[]
+}
+// one cat for many courses
+// one courses cannot be in multiple cat
+// so cat to course one to many
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
