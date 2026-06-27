@@ -18,33 +18,19 @@ enum Role {
 }
 
 model User {
-  id          Int          @id @default(autoincrement())
-  email       String       @unique
-  name        String?
-  role        Role         @default(USER)
-  courses     Course[]
-  enrollments Enrollment[]
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-}
-
-model Course {
-  id    Int    @id @default(autoincrement())
-  title String
-  price Int
-
-  instructorId Int
-  instructor   User @relation(fields: [instructorId], references: [id])
-
-  enrollments Enrollment[]
-
-  categoryId Int
-  category   Category @relation(fields: [categoryId], references: [id])
-
-  lessons Lesson[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int           @id @default(autoincrement())
+  email        String        @unique
+  name         String?
+  role         Role          @default(USER)
+  courses      Course[]
+  enrollments  Enrollment[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  reviews      Review[]
+  certificates Certificate[]
+  wishLists    WishList?
+  cart         Cart?
+  orders       Order[]
 }
 
 //explicit many to many 
@@ -96,6 +82,113 @@ model Content {
   updatedAt         DateTime    @updatedAt
 }
 
-// 1 lesson can have many contents ? yes
-// 1 content can have many lesson ? no
-// 1 to many : lesson -> content
+model Review {
+  id      Int    @id @default(autoincrement())
+  title   String
+  stars   Int
+  comment String
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  courseId Int
+  course   Course @relation(fields: [courseId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Certificate {
+  id               Int      @id @default(autoincrement())
+  completedOn      DateTime @default(now())
+  title            String
+  verificationCode String   @unique
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  courseId Int
+  course   Course @relation(fields: [courseId], references: [id])
+}
+
+model Course {
+  id    Int     @id @default(autoincrement())
+  title String
+  price Decimal
+
+  instructorId Int
+  instructor   User @relation(fields: [instructorId], references: [id])
+
+  enrollments Enrollment[]
+
+  categoryId   Int
+  category     Category      @relation(fields: [categoryId], references: [id])
+  lessons      Lesson[]
+  reviews      Review[]
+  certificates Certificate[]
+
+  cartItem CartItem[]
+
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  wishlistItems WishListItem[]
+  orderItems    OrderItem[]
+}
+
+model WishList {
+  id     Int            @id @default(autoincrement())
+  items  WishListItem[]
+  userId Int            @unique
+  user   User           @relation(fields: [userId], references: [id])
+}
+
+model WishListItem {
+  id         Int      @id @default(autoincrement())
+  wishlistId Int
+  wishList   WishList @relation(fields: [wishlistId], references: [id])
+
+  courseId Int
+  course   Course @relation(fields: [courseId], references: [id])
+
+  @@unique([wishlistId, courseId])
+}
+
+model Cart {
+  id         Int        @id @default(autoincrement())
+  userId     Int        @unique
+  totalPrice Decimal
+  user       User       @relation(fields: [userId], references: [id])
+  items      CartItem[]
+}
+
+model CartItem {
+  id       Int     @id @default(autoincrement())
+  courseId Int
+  course   Course  @relation(fields: [courseId], references: [id])
+  price    Decimal
+  cartId   Int
+  cart     Cart    @relation(fields: [cartId], references: [id])
+
+  @@unique([cartId, courseId])
+}
+
+model Order {
+  id         Int         @id @default(autoincrement())
+  createdAt  DateTime    @default(now())
+  userId     Int
+  totalPrice Decimal
+  user       User        @relation(fields: [userId], references: [id])
+  items      OrderItem[]
+}
+
+model OrderItem {
+  id      Int     @id @default(autoincrement())
+  orderId Int
+  order   Order   @relation(fields: [orderId], references: [id])
+  price   Decimal
+
+  courseId Int
+  course   Course @relation(fields: [courseId], references: [id])
+
+  @@unique([orderId, courseId])
+}
