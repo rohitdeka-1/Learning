@@ -12,124 +12,90 @@ datasource db {
   provider = "postgresql"
 }
 
-enum Role{
+enum Role {
   ADMIN
   USER
 }
 
-model User{
-  id  Int  @id @default(autoincrement())
-  email String @unique
-  name String?
-  role Role @default(USER)
-  courses Course[]
+model User {
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  name        String?
+  role        Role         @default(USER)
+  courses     Course[]
   enrollments Enrollment[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
-model Course{
-  id Int @id @default(autoincrement())
+model Course {
+  id    Int    @id @default(autoincrement())
   title String
-  price Int 
+  price Int
 
   instructorId Int
-  instructor User @relation(fields: [instructorId], references:[id])
+  instructor   User @relation(fields: [instructorId], references: [id])
 
   enrollments Enrollment[]
 
   categoryId Int
-  category Category @relation(fields:[categoryId],references:[id])
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  lessons Lesson[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 //explicit many to many 
-model Enrollment{
-  id Int @id @default(autoincrement())
-  enrolledAt DateTime
-  progress Int
-  completed Boolean
-  userId Int
-  user User @relation(fields: [userId], references: [id])
+model Enrollment {
+  id         Int      @id @default(autoincrement())
+  enrolledAt DateTime @default(now())
+  progress   Int
+  completed  Boolean
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+  courseId   Int
+  course     Course   @relation(fields: [courseId], references: [id])
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  title     String
+  courses   Course[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Lesson {
+  id                Int      @id @default(autoincrement())
+  title             String
+  createdAt         DateTime @default(now())
+  durationInMinutes Int
+
   courseId Int
-  course Course @relation(fields:[courseId], references:[id])
+  course   Course @relation(fields: [courseId], references: [id])
+
+  contents Content[]
 }
 
-model Category{
-  id Int @id @default(autoincrement())
-  title String
-  courses Course[]
+enum ContentType {
+  PDF
+  VIDEO
+  TEXT
+  QUIZ
 }
-// one cat for many courses
-// one courses cannot be in multiple cat
-// so cat to course one to many
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+model Content {
+  id                Int         @id @default(autoincrement())
+  type              ContentType @default(TEXT)
+  durationInMinutes Int
+  lessonId          Int
+  lesson            Lesson      @relation(fields: [lessonId], references: [id])
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+}
+
+// 1 lesson can have many contents ? yes
+// 1 content can have many lesson ? no
+// 1 to many : lesson -> content
