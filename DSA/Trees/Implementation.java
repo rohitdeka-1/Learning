@@ -48,21 +48,68 @@ public class Implementation {
         return sum_tree(root.left) + sum_tree(root.right) + root.val;
     }
 
-    public static 
+    public static int height_tree(Node root){
+
+        if(root == null) return 0;
+        if(root.left == null && root.right == null ) return 0;
+        int left_height = height_tree(root.left);
+        int right_height = height_tree(root.right);
+
+        return 1 + Math.max(left_height,right_height);
+        
+    }
+
+    public static int max_value(Node root){
+
+        if(root == null){
+            return Integer.MIN_VALUE;
+        }
+
+        int leftMax =  max_value(root.left);
+        int rightMax = max_value(root.right);
+
+        return Math.max(root.val, Math.max(leftMax,rightMax) );
+         
+    }
     
+
+    static int minimumInTree(Node root){
+
+        if(root == null) return Integer.MAX_VALUE;
+
+        int leftMin = minimumInTree(root.left);
+        int rightMin = minimumInTree(root.right);
+
+        return Math.min(root.val, Math.min(leftMin,rightMin));
+
+    }
+
+    static int productOfTree(Node root){
+
+        if(root == null) return 1;
+
+        int leftProd = productOfTree(root.left);
+        int rightProd = productOfTree(root.right);
+
+        return ((leftProd * rightProd) * root.val );
+
+
+    }
+
+
     public static void main(String[] args){
-        Node root = new Node(2);
-        Node a = new Node(4);
-        Node b = new Node(10);
+        Node root = new Node(1);
+        Node a = new Node(2);
+        Node b = new Node(3);
         root.left = a;
         root.right = b;
 
-        Node c = new Node(6);
-        Node d = new Node(5 );
+        Node c = new Node(1);
+        Node d = new Node(1 );
         a.left = c;
         a.right = d;
 
-        Node e = new Node(11);
+        Node e = new Node(1);
         b.right = e;
         
         // preOrder(root);
@@ -71,6 +118,19 @@ public class Implementation {
 
         int sum = sum_tree(root);
         System.out.println(sum);
+
+        int maxi = max_value(root);
+        System.out.println(maxi);
+
+        int height = height_tree(root);
+        System.out.println(height);
+        
+        int minVal = minimumInTree(root);
+        System.out.println(minVal);
+
+        int prod = productOfTree(root);
+        System.out.println("product" + prod);
+
     }
 
 }
