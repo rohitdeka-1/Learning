@@ -197,7 +197,7 @@ datasource db {
 // Udemy like website
 
 enum Role {
-  EDUCATOR
+  EDUCATORS
   USER
 }
 
