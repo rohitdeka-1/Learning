@@ -13,9 +13,52 @@ public class deleteZero {
 
     }
 
-    public static Node deleteZeroChild(Node root, int key){
+    public static void deleteTwoChild(){
+        
+    }
+
+
+    public static void deleteOneChild(Node root, int key){
         if(root == null){
-            return root;
+            return;
+        } 
+        if(root.val>key){ //left
+            if(root.left==null) return;
+            if(root.left.val == key){
+                if(root.left.left == null && root.left.right == null){
+                    root.left = null; // 0 child;
+                } else if(root.left.left == null || root.left.right== null){ // 1 child;
+                    if(!(root.left.left == null)){
+                       root.left = root.left.left; 
+                    }else{
+                        root.left = root.left.right;
+                    }
+                }
+            } else{
+                deleteOneChild(root.left, key);
+            }
+        } else{ // right
+            if(root.right==null) return;
+            if(root.right.val == key){
+                if(root.right.left == null && root.right.right==null){
+                    root.right = null;
+                } else if(root.right.left == null || root.right.right == null){
+                    if(!(root.right.left == null)){
+                        root.right = root.right.left;
+                    }else{
+                        root.right = root.right.right;
+                    }
+                }
+            } else{
+                deleteOneChild(root.right,key);
+            }
+        }
+    } 
+
+
+    public static void deleteZeroChild(Node root, int key){
+        if(root == null){
+            return;
         } 
         if(root.val>key){
             if(root.left.val == key){
@@ -30,7 +73,6 @@ public class deleteZero {
                 deleteZeroChild(root.right,key);
             }
         }
-        return root;
     }
 
     public static void inorder(Node root) {
@@ -57,7 +99,7 @@ public class deleteZero {
         System.out.println();
 
         // Delete leaf node 4 (has zero children)
-        root = deleteZeroChild(root, 4);
+        deleteOneChild(root, 10);
 
         System.out.print("After delete:  ");
         inorder(root);
