@@ -85,20 +85,38 @@ print(l2)
 # [[3]]
 # [1]  TRUE FALSE  TRUE
 
+# print( l2[[2]][2] ) # prints b
 
 
 
+#MATRIX ( 2 dimentional homogenous datatype)
+m1 <- matrix(c(1,2,3,4,6,7))
+print(m1) 
 
 
+#      [,1]
+# [1,]    1
+# [2,]    2
+# [3,]    3
+# [4,]    4
+# [5,]    6
+# [6,]    7
+
+m2 <- matrix(c(1,2,3,4,5,6), nrow=2,ncol= 3)
+print(m2)
+
+#     [,1] [,2] [,3]
+# [1,]    1    3    5
+# [2,]    2    4    6
 
 
+m2 <- matrix(c(1,2,3,4,5,6), nrow=2,ncol= 3, byrow = TRUE)
+print(m2)
+#      [,1] [,2] [,3]
+# [1,]    1    2    3
+# [2,]    4    5    6
 
-
-
-
-
-
-
+ 
 
 
 
