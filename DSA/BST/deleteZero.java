@@ -13,10 +13,7 @@ public class deleteZero {
 
     }
 
-    public static void deleteTwoChild(){
-        
-    }
-
+   
 
     public static void deleteOneChild(Node root, int key){
         if(root == null){
