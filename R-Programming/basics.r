@@ -51,14 +51,41 @@ mixbag1 <- c(1,T,2,3)
 print(mixbag1)
 print(class(mixbag1))
 print(v[1])
-
+print(v[1:2])
+#[1] 1 2
+# vectors data precedance ->  (character <- numeric <- logical) data types coers 
 # one based indexing
 
-#List ( heterogenous )
+#List ( heterogenous dataStructure)
 l1 <- list(1,"a",TRUE)
+#print(l1)
+
+# [[1]]
+# [1] 1
+
+# [[2]]
+# [1] "a"
+
+# [[3]]
+# [1] TRUE
+
+#print(l1[[1]])  # prints 1
+
+#List of vectors
+
+l2 = list(c(1,2,3),c('a','b','c'),c(T,F,T))
+print(l2)
+
+# [[1]]
+# [1] 1 2 3
+
+# [[2]]
+# [1] "a" "b" "c"
+
+# [[3]]
+# [1]  TRUE FALSE  TRUE
 
 
-# matrix
 
 
 
