@@ -272,3 +272,11 @@ print(s1)
 print(s1[,-3])
 print(s1)
 
+#Vector
+# A vector is a one-dimensional collection of elements.
+x <- c(10,20,30,40)
+
+
+
+
+
